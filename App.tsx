@@ -1,20 +1,32 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, View, TextInput, Button, Image, Linking } from 'react-native';
+import React, { useCallback }  from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Signin from './screens/Signin';
+import Signup from './screens/Signup';
+import Home from './screens/Home';
+const App = () =>  {
+  const [text, onChangeText] = React.useState("");
+  const [number, onChangeNumber] = React.useState("");
+  const bodyText = "Welcome Back!";
+  const forgot = "Forgot Password!";
 
-export default function App() {
+  const Stack = createNativeStackNavigator();
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator
+      screenOptions={{headerShown:false}}
+      >
+        <Stack.Screen
+          name='Signin'
+          component={Signin}
+        />
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="signup" component={Signup} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+  }
+export default App;

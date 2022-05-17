@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { SafeAreaView, StyleSheet, Text, View, TextInput, Button, Image, ImageBackground, Alert } from 'react-native';
+import { SafeAreaView,TouchableHighlight, StyleSheet, Text, View, TextInput, Button, Image, ImageBackground, Alert } from 'react-native';
 import { StatusBar } from "expo-status-bar";
 import Cell from "./components/Cell";
 
@@ -19,7 +19,7 @@ const copyArray = (original: string[][]) => {
   return copy;
 };
 
-const Home = () => {
+const Home = ({navigation}: {navigation:any}) => {
   const [map, setMap] = useState(emptyMap);
   const [currentTurn, setCurrentTurn] = useState("x");
   const [gameMode, setGameMode] = useState("BOT_MEDIUM"); // LOCAL, BOT_EASY, BOT_MEDIUM;
@@ -208,16 +208,25 @@ const Home = () => {
   return (
     <View style={styles.container}>
       <ImageBackground source={require('../assets/bg.jpg')} style={styles.bg} resizeMode="contain">
+        <View style={styles.header}>
+        <View style={styles.back}>
+          <TouchableHighlight onPress={()=>{navigation.navigate('Signin')}}>
+          <Image
+            source={ require('../assets/back.png' )}
+            style={{ width: 30, height: 30 }}
+           ></Image>
+           </TouchableHighlight>
+        </View>
         <Text
           style={{
             fontSize: 24,
             color: "white",
-            position: "absolute",
-            top: 50,
+            marginRight:10
           }}
         >
           Current Turn: {currentTurn.toUpperCase()}
         </Text>
+        </View>
         <View style={styles.map}>
           {map.map((row, rowIndex) => (
             <View key={`row-${rowIndex}`} style={styles.row}>
@@ -292,7 +301,8 @@ const styles = StyleSheet.create({
     paddingTop: 15,
   },
   map: {
-    width: "80%",
+    width: 307,
+    marginTop:20,
     aspectRatio: 1,
   },
   row: {
@@ -312,5 +322,23 @@ const styles = StyleSheet.create({
     padding: 10,
     paddingHorizontal: 15,
   },
+  back:{
+    width:50,
+    height:50,
+    backgroundColor:'#FFEC00',
+    borderRadius: 11,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginLeft:10
+  },
+  header:{
+    flexDirection:'row',
+    alignItems:'center',
+    justifyContent:'space-between',
+    width:'100%',
+    position:'absolute',
+    top:0,
+    marginTop:30
+}
 });
 export default Home;

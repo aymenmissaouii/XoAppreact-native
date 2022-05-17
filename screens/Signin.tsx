@@ -10,6 +10,10 @@ const Signin = ({navigation}: {navigation:any}) =>  {
   const bodyText = "Welcome Back!";
   const forgot = "Forgot Password!";
 
+  const test = () => {
+
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.fullbody}>
@@ -33,8 +37,8 @@ const Signin = ({navigation}: {navigation:any}) =>  {
 
       <TextInput
       style={styles.input}
-      onChangeText={onChangeNumber}
-      value={number}
+      onChangeText={onChangeText}
+      value={text}
       placeholder="Password"
       placeholderTextColor='#fff'
       />
@@ -69,10 +73,11 @@ const Signin = ({navigation}: {navigation:any}) =>  {
           source={ require('../assets/google.png' )}
           style={styles.icon}
         ></Image>
-
       </View>
-      <Text style={{marginTop:45, fontWeight:'bold', color:'#fff'}}>
-        You Don't have an account? <Text style={{color:'#FFEC00'}} onPress={()=>{navigation.navigate('signup')}}>Signup</Text>
+      <Text style={{marginTop:30, fontWeight:'bold', color:'#fff'}}>
+        You Don't have an account? <Text style={{color:'#FFEC00'}} onPress={()=>{
+          navigation.navigate('signup')
+          }}>Signup</Text>
       </Text>
       </View>
       </View>
@@ -84,13 +89,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#242D34',
-    width:'100%'
     //alignItems: 'center',
     //justifyContent: 'center',
   },
   fullbody:{
     marginTop:30,
-    marginLeft:10
+    backgroundColor: '#242D34',
   },
   input: {
     height: 60,
@@ -132,12 +136,12 @@ const styles = StyleSheet.create({
     fontSize:15,
     fontWeight:'bold',
     color:'#fff',
-    marginLeft:250
+    width:'98%',
+    textAlign:'right'
   },
   button:{
     color:'#242D34',
     height:60,
-    width:360,
     marginLeft:10,
     borderRadius:11,
     marginTop:50,
@@ -173,6 +177,12 @@ const styles = StyleSheet.create({
   },
   footer:{
     alignItems:'center'
+  },
+  wrong:{
+    color:'red',
+    fontSize:18,
+    fontWeight:'bold',
+    marginLeft:10,
   }
 });
 

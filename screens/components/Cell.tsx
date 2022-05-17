@@ -18,16 +18,16 @@ const Cell = (props: { cell: any; onPress: any; }) => {
 const styles = StyleSheet.create({
   cell: {
     width: 100,
-    height: 100,
+    //height: 100,
     flex: 1,
   },
   circle: {
-    flex: 1,
-    borderRadius: 50,
+    flex: 1,  
+    borderRadius: 100,
     alignItems: "center",
     justifyContent: "center",
     margin: 10,
-
+    //height:30,
     borderWidth: 10,
     borderColor: "white",
   },

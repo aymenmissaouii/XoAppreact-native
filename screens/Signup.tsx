@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
     },
     fullbody:{
       marginTop:30,
-      marginLeft:10
+      backgroundColor: '#242D34',
     },
     input: {
       height: 60,
@@ -139,7 +139,6 @@ const styles = StyleSheet.create({
     button:{
       color:'#242D34',
       height:60,
-      width:360,
       marginLeft:10,
       borderRadius:11,
       marginTop:50,
